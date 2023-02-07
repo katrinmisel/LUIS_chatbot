@@ -1,3 +1,13 @@
 /chatbot
 BotFramework-Emulator-4.14.1-linux-x86_64.AppImage
 keys.py
+/bot/__pycache__
+/bot/bots
+/bot/cognitiveModels
+/bot/deploymentTemplates
+/bot/config.py
+/bot/NOTICE.md 
+/bot/README.md
+/bot/README-LUIS.md 
+/bot/dialogs/__pycache__
+/bot/helpers/__pycache__
