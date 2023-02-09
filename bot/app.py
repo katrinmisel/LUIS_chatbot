@@ -28,7 +28,7 @@ from botbuilder.integration.applicationinsights.aiohttp import (
 )
 
 from config import DefaultConfig
-from dialogs import MainDialog, BookingDialogT
+from dialogs import MainDialog, BookingDialog
 from bots import DialogAndWelcomeBot
 
 from adapter_with_error_handler import AdapterWithErrorHandler
@@ -64,7 +64,7 @@ TELEMETRY_CLIENT = ApplicationInsightsTelemetryClient(
 
 # Create dialogs and Bot
 RECOGNIZER = FlightBookingRecognizer(CONFIG)
-BOOKING_DIALOG = BookingDialog()
+BOOKING_DIALOG = BookingDialog(telemetry_client=TELEMETRY_CLIENT)
 DIALOG = MainDialog(RECOGNIZER, BOOKING_DIALOG, telemetry_client=TELEMETRY_CLIENT)
 BOT = DialogAndWelcomeBot(CONVERSATION_STATE, USER_STATE, DIALOG, TELEMETRY_CLIENT)
 
@@ -86,11 +86,17 @@ async def messages(req: Request) -> Response:
     return Response(status=HTTPStatus.OK)
 
 
-APP = web.Application(middlewares=[bot_telemetry_middleware, aiohttp_error_middleware])
-APP.router.add_post("/api/messages", messages)
+#APP = web.Application(middlewares=[bot_telemetry_middleware, aiohttp_error_middleware])
+#APP.router.add_post("/api/messages", messages)
 
-if __name__ == "__main__":
+def init_func(argv):
+    APP = web.Application(middlewares=[bot_telemetry_middleware, aiohttp_error_middleware])
+    APP.router.add_post("/api/messages", messages)
+    return APP
+
+if __name__ == "__main__": 
+    APP = init_func(None)
     try:
-        web.run_app(APP, host="localhost", port=CONFIG.PORT)
+        web.run_app(APP, host="0.0.0.0", port=CONFIG.PORT)
     except Exception as error:
         raise error

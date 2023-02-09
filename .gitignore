@@ -12,3 +12,4 @@ keys.py
 /bot/dialogs/__pycache__
 /bot/helpers/__pycache__
 __pycache__
+bot/.deployment

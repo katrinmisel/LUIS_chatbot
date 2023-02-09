@@ -30,7 +30,7 @@ class FlightBookingRecognizer(Recognizer):
             luis_application = LuisApplication(
                 configuration.LUIS_APP_ID,
                 configuration.LUIS_API_KEY,
-                "https://" + configuration.LUIS_API_HOST_NAME,
+                configuration.LUIS_API_HOST_NAME,
             )
 
             options = LuisPredictionOptions()
