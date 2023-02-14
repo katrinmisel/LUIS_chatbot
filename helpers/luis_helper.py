@@ -58,8 +58,8 @@ class LuisHelper:
                 # e.g. missing a Year.
                 result.str_date = "2020-01-01"
                 result.end_date = "2020-01-02"
-                result.budget = str(recognizer_result.entities.get("$instance", {}).get("str_date", [])[0])
-                #result.budget = recognizer_result.entities.get("$instance", {}).get("budget", [])[0].get("text")
+                #result.budget = str(recognizer_result.entities.get("$instance", {}).get("str_date", [])[0])
+                result.budget = recognizer_result.entities.get("$instance", {}).get("budget", [])[0].get("text")
 
 
         except Exception as exception:
