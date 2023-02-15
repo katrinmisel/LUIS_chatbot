@@ -179,7 +179,7 @@ class BookingDialog(CancelAndHelpDialog):
         if step_context.result:
 
             booking_details = step_context.options
-            booking_details.budget = step_context.result
+            #booking_details.budget = step_context.result
 
             return await step_context.end_dialog(booking_details)
 

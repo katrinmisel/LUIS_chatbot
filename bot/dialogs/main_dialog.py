@@ -62,6 +62,7 @@ class MainDialog(ComponentDialog):
             )
 
             return await step_context.next(None)
+        
         message_text = (
             str(step_context.options)
             if step_context.options

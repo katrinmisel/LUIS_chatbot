@@ -9,9 +9,9 @@ import os
 class DefaultConfig:
     """Configuration for the bot."""
 
-    PORT = 3978
-    APP_ID = os.environ.get("MicrosoftAppId", "")
-    APP_PASSWORD = os.environ.get("MicrosoftAppPassword", "")
+    PORT = 8000
+    APP_ID = os.environ.get("MicrosoftAppId", "9d9fad9e-518e-4533-947d-b1eef182c3fe")
+    APP_PASSWORD = os.environ.get("MicrosoftAppPassword", "4TZ8Q~ORsqvoc4M5D.69QfcOy9iWtaRdI4iSWb9b")
     LUIS_APP_ID = os.environ.get("LuisAppId", "9a2e59b9-686d-492b-959b-8ceff62b8494")
     LUIS_API_KEY = os.environ.get("LuisAPIKey", "31031bdf48c943c5a836b722abe99440")
     # LUIS endpoint host name, ie "westus.api.cognitive.microsoft.com"

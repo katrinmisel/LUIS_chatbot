@@ -6,3 +6,5 @@ NOTICE.md
 README-LUIS.md
 README.md
 luis_venv
+.vscode
+notebooks/__pycache__

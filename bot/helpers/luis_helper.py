@@ -43,22 +43,13 @@ class LuisHelper:
             if intent == Intent.BOOK_FLIGHT.value:
                 result = BookingDetails()
 
-                # We need to get the result from the LUIS JSON which at every level returns an array.
-                
-                #to_entities = recognizer_result['entities']['$instance']['dst_city'][0]
-                #if to_entities:
-                #    result.dst_city = to_entities[0]["text"].capitalize()
-                #else: result.dst_city = None
+                # We need to get the result from the LUIS recognizer_result.
 
                 result.dst_city = recognizer_result.entities.get("$instance", {}).get("dst_city", [])[0].get("text").capitalize()
                 result.or_city = recognizer_result.entities.get("$instance", {}).get("or_city", [])[0].get("text").capitalize()
-
-                # This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop
-                # the Time part. TIMEX is a format that represents DateTime expressions that include some ambiguity.
-                # e.g. missing a Year.
-                result.str_date = "2020-01-01"
-                result.end_date = "2020-01-02"
-                #result.budget = str(recognizer_result.entities.get("$instance", {}).get("str_date", [])[0])
+                
+                result.str_date = recognizer_result.entities.get("$instance", {}).get("str_date", [])[0].get("text")
+                result.end_date = recognizer_result.entities.get("$instance", {}).get("end_date", [])[0].get("text")
                 result.budget = recognizer_result.entities.get("$instance", {}).get("budget", [])[0].get("text")
 
 
