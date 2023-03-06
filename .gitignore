@@ -8,3 +8,5 @@ README.md
 luis_venv
 .vscode
 notebooks/__pycache__
+date_problems.ipynb
+notebooks/app_venv
