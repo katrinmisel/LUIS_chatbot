@@ -10,3 +10,4 @@ luis_venv
 notebooks/__pycache__
 date_problems.ipynb
 notebooks/app_venv
+bot/config.py
