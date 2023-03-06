@@ -5,6 +5,7 @@
 
 import os
 
+#hFW8Q~kzQnV1EPtOxi4km_MaRO7wTybDohsiwaO5
 
 class DefaultConfig:
     """Configuration for the bot."""
